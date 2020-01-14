@@ -36,7 +36,7 @@ object SonatypeStats {
         io <- printStats(stats, config.getStringList("scala-major-versions").size)
       } yield ()
 
-      Await.result(complete, 10.seconds)
+      Await.result(complete, 30.seconds)
     } finally {
       sys.terminate()
     }
@@ -116,7 +116,7 @@ object SonatypeStats {
                       username: String,
                       password: String) = {
     val requestQuery = Query("p" -> project,
-                             "t" -> "raw",
+                             "t" -> "ip",
                              "g" -> group,
                              "a" -> name,
                              "from" -> from.format(YearMonthFormat),
